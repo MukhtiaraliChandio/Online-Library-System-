@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+*{
+   
+   margin: 0;
+   padding: 0;
+
+}
+body
+{
+
+   background-image : url(form.jpg);
+   background-position: center;
+   background-size: cover;
+   font-family: sans-serif;
+   margin-top: 40px;
+
+}
+.regform
+{
+
+   width: 600px;
+   background-color: rgb(0,0,0,0.6);
+   margin: auto;
+   color: #FFFFFFFF;
+   padding: 10px 0px 10px 0px;
+   text-align: center;
+   border-radius: 10px 10px 0px 0px; 
+
+}
+.main 
+{
+             
+   background-color: rgb(0,0,0,0.5);
+   width: 600px;
+   margin: auto;
+
+}
+.form
+{
+
+   padding: 5px;
+
+}
+#name
+{
+
+   width: 100%;
+   height: 100px;
+
+} 
+.firstName
+{
+    position: relative;
+    left: 400px;
+    top:-80px;
+    line-height: 40px;
+    border-radius :6px;
+    padding: 0 22px;
+    font-size: 16px;
+
+}
+
+
+.firstlabel
+{
+
+     position: relative;
+     color: #E5E5E5;
+     text-transform:capitalize;
+     font-size: 14px;
+     left: 0px;
+     top:-0px;  
+
+}
+.lastName
+{
+     position: relative;
+     left: 417px;
+     top:-80px;
+     line-height: 40px;
+     border-radius: 6px;
+     padding: 0 22px;
+     font-size: 16px;
+               	  
+}
+.lastlabel
+{
+     position: relative;
+     color: #E5E5E5;
+     text-transform:capitalize;
+     font-size: 14px;
+     left: 0px;
+     top:-0px;
+
+}
+.fatherNamelabel
+{
+     position: relative;
+     color: #E5E5E5;
+     text-transform:capitalize;
+     font-size: 14px;
+     left: 0px;
+     top:-0px;
+
+}
+.surnamelabel
+{
+
+     position: relative;
+     color: #E5E5E5;
+     text-transform:capitalize;
+     font-size: 14px;
+     left: 0px;
+     top:-0px;
+
+
+}
+.contactNumber
+{
+	 
+	 position: relative;
+     color: #E5E5E5;
+     text-transform:capitalize;
+     font-size: 14px;
+     left: 0px;
+     top:-0px;
+
+
+}
+.cnicNumber
+{
+     
+      position: relative;
+      color: #E5E5E5;
+      text-transform:capitalize;
+      font-size: 14px;
+      left: 0px;
+      top:-0px;
+
+}
+.emailId
+{
+      position: relative;
+      color: #E5E5E5;
+      text-transform:capitalize;
+      font-size: 14px;
+      left: 0px;
+      top:-0px;
+
+}
+.depart
+{
+
+      position: relative;
+      color: #E5E5E5;
+      text-transform:capitalize;
+      font-size: 14px;
+      left: 0px;
+      top:-0px;
+
+}
+.address
+{
+
+      position: relative;
+      color: #E5E5E5;
+      text-transform:capitalize;
+      font-size: 14px;
+      left: 0px;
+      top:-0px;
+
+}
+.regNo
+{
+      position: relative;
+      color: #E5E5E5;
+      text-transform:capitalize;
+      font-size: 14px;
+      left: 0px;
+      top:-0px;
+
+}
+.dateofbirthday
+{
+
+      position: relative;
+      color: #E5E5E5;
+      text-transform:capitalize;
+      font-size: 14px;
+      left: 0px;
+      top:-0px;
+
+}
+.cityName
+{
+      
+      position: relative;
+      color: #E5E5E5;
+      text-transform:capitalize;
+      font-size: 14px;
+      left: 0px;
+      top:-0px;
+
+}
+.provinceName
+{
+
+      position: relative;
+      color: #E5E5E5;
+      text-transform:capitalize;
+      font-size: 14px;
+      left: 0px;
+      top:-0px;
+
+}
+.zipCode
+{
+
+     position: relative;
+     color: #E5E5E5;
+     text-transform:capitalize;
+     font-size: 14px;
+     left: 0px;
+     top:-0px;
+
+
+
+}
+.country
+{
+
+     position: relative;
+	 color: #E5E5E5;
+	 text-transform:capitalize;
+	 font-size: 14px;
+	 left: 0px;
+	 top:-0px;
+
+
+}
+.selectGender
+{
+     position: relative;
+     color: #E5E5E5;
+     text-transform:capitalize;
+     font-size: 14px;
+     left: 0px;
+     top:-0px;
+
+
+}
+.male
+{
+     position: relative;
+     color: #E5E5E5;
+     text-transform:capitalize;
+     font-size: 14px;
+     left: 0px;
+     top:-0px;
+         
+         
+}
+.female
+{
+
+     position: relative;
+     color: #E5E5E5;
+     text-transform:capitalize;
+     font-size: 14px;
+     left: 0px;
+     top:-0px;
+
+
+}
+.Nationality
+{
+
+    position: relative;
+    color: #E5E5E5;
+    text-transform:capitalize;
+    font-size: 14px;
+    left: 0px;
+    top:-0px;
+
+
+}
+</style>
+</head>
+<body>
+
+<div class="regform"><h1>Author Registration Form</h1></div>
+<div class="main">
+  <form action="AuthorServlet"  method="post" onsubmit="return validateForm()">
+  <input type="hidden" id="stdId" name="option" value="insertdataauthor">
+   
+   
+
+   
+    <div id="name">
+      
+      
+      <br>
+      <center><label class="firstlabel">First Name</label>
+        <input type="text" name="firstname" maxlength="50" size="50"></center>
+      <br>
+      <center><label class="lastlabel">Last Name</label>
+        <input type="text" name="lastname" maxlength="50" size="50"></center>
+    </div>
+
+    <div>
+      <center>
+        <label class="fatherNamelabel">Father's Name</label>
+        <input type="text" name="fatherName" maxlength="50" size="50"></center>
+      <br>
+      <center>
+        <label class="surnamelabel">Surname</label>
+        <input type="text" name="surname" maxlength="50" size="50">
+      </center>
+    </div>
+
+    <br>
+    <div>
+      <center>
+        <label class="contactNumber">Contact Number</label>
+        <input type="text" name="contactNumber" maxlength="50" size="50">
+      </center><br>
+      <center>
+        <label class="cnicNumber">CNIC Number</label>
+        <input type="text" name="cnicNumber" maxlength="50" size="50"><br>
+      </center>
+    </div>
+
+    <div>
+      <br>
+      <center>
+        <label class="emailId">Email Id</label>
+        <input type="text" name="emailId" maxlength="50" size="50"><br>
+        <br>
+       
+      </center>
+    </div>
+  <div>
+     
+    </div>
+
+  
+  
+    
+      <div>
+     
+      </div>
+
+      
+
+    
+
+      <div>
+        <center>
+          <label class="selectGender">Select Gender</label><br>
+          <input type="radio" id="male" name="gender" value="male">
+          <label class="male">Male</label><br>
+          <input type="radio" id="female" name="gender" value="female">
+          <label class="female">Female</label><br>
+        </center>
+      </div>
+
+      <div>
+        <center>
+          <label class="address">Address</label><br>
+          <textarea rows="5" cols="50" wrap="hard" name="address"></textarea>
+        </center>
+      </div>
+
+      <center>
+        <input type="submit" value="Send">
+        <input type="reset" value="Reset">
+      </center>
+    </div>
+
+  </form>
+
+
+<script>
+function validateForm() {
+  var form = document.forms[0];
+
+  var firstName = form["firstname"].value.trim();
+  var lastName = form["lastname"].value.trim();
+  var email = form["emailId"].value.trim();
+  var phone = form["contactNumber"].value.trim();
+  var cnic = form["cnicNumber"].value.trim();
+  var gender = form["gender"].value;
+  var address = form["address"].value.trim();
+
+  // ✅ 1. Check if required fields are filled
+  if (firstName === "" || lastName === "" || email === "" || phone === "" || cnic === "" || address === "") {
+    alert("All fields must be filled out.");
+    return false;
+  }
+
+  // ✅ 2. Validate Email format
+  var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  if (!emailPattern.test(email)) {
+    alert("Please enter a valid email address.");
+    return false;
+  }
+
+  // ✅ 3. Validate phone number (exactly 11 digits)
+  var contactPattern = /^[0-9]{11}$/;
+  if (!contactPattern.test(phone)) {
+    alert("Please enter a valid 11-digit contact number.");
+    return false;
+  }
+
+  // ✅ 4. Validate CNIC (exactly 13 digits)
+  var cnicPattern = /^[0-9]{13}$/;
+  if (!cnicPattern.test(cnic)) {
+    alert("Please enter a valid 13-digit CNIC number.");
+    return false;
+  }
+
+  // ✅ 5. Validate gender selection (must be one selected)
+  var genderSelected = form["gender"][0].checked || form["gender"][1].checked;
+  if (!genderSelected) {
+    alert("Please select your gender.");
+    return false;
+  }
+
+  // ✅ 6. Optional: Validate name fields (only letters allowed)
+  var namePattern = /^[A-Za-z\s]+$/;
+  if (!namePattern.test(firstName) || !namePattern.test(lastName)) {
+    alert("First and Last names must contain only letters.");
+    return false;
+  }
+
+  return true; // All checks passed
+}
+</script>
+</div>
+</body>
+</html>

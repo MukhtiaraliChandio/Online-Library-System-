@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Teacher Registration Form</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        background-image: url("form.jpg");
+        background-position: center;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        margin: 40px;
+    }
+    .regform {
+        width: 600px;
+        background-color: rgba(0, 0, 0, 0.7);
+        margin: auto;
+        color: #fff;
+        padding: 15px;
+        text-align: center;
+        border-radius: 10px 10px 0 0;
+    }
+    .main {
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 600px;
+        margin: auto;
+        padding: 20px;
+        border-radius: 0 0 10px 10px;
+    }
+    .form-group {
+        margin-bottom: 15px;
+        color: #E5E5E5;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        text-transform: capitalize;
+        font-size: 14px;
+    }
+    input, textarea, select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+    textarea {
+        resize: none;
+    }
+    .radio-group {
+        display: flex;
+        gap: 20px;
+        margin-top: 5px;
+    }
+    .form-actions {
+        text-align: center;
+        margin-top: 20px;
+    }
+    input[type="submit"], input[type="reset"] {
+        background: #007BFF;
+        color: #fff;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        margin: 0 5px;
+    }
+    input[type="reset"] {
+        background: #dc3545;
+    }
+</style>
+</head>
+<body>
+
+<div class="regform"><h1>Teacher Registration Form</h1></div>
+<div class="main">
+  <form action="TeacherServlet" method="post" onsubmit="return validateForm()">
+    <input type="hidden" name="option" value="insertdata">
+
+    <div class="form-group">
+        <label>First Name</label>
+        <input type="text" name="firstname" maxlength="50">
+    </div>
+    <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" name="lastname" maxlength="50">
+    </div>
+    <div class="form-group">
+        <label>Father's Name</label>
+        <input type="text" name="fatherName" maxlength="50">
+    </div>
+    <div class="form-group">
+        <label>Surname</label>
+        <input type="text" name="surname" maxlength="50">
+    </div>
+    <div class="form-group">
+        <label>Contact Number</label>
+        <input type="text" name="contactNumber" maxlength="11">
+    </div>
+    <div class="form-group">
+        <label>CNIC Number</label>
+        <input type="text" name="cnicNumber" maxlength="13">
+    </div>
+    <div class="form-group">
+        <label>Email Id</label>
+        <input type="text" name="emailId" maxlength="100">
+    </div>
+    <div class="form-group">
+        <label>Department</label>
+        <input type="text" name="depart" maxlength="50">
+    </div>
+    <div class="form-group">
+        <label>Date of Birth</label>
+        <input type="date" name="birthday">
+    </div>
+    <div class="form-group">
+        <label>Select Gender</label>
+        <div class="radio-group">
+            <label><input type="radio" name="gender" value="male"> Male</label>
+            <label><input type="radio" name="gender" value="female"> Female</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Address</label>
+        <textarea rows="4" name="address"></textarea>
+    </div>
+    <div class="form-group">
+        <label>User Id</label>
+        <input type="text" name="userId" maxlength="50">
+    </div>
+    <div class="form-group">
+        <label>User Password</label>
+        <input type="password" name="userPassword" maxlength="50">
+    </div>
+    <div class="form-actions">
+        <input type="submit" value="Register"><br>
+        <br>
+        <input type="reset" value="Reset">
+    </div>
+  </form>
+</div>
+
+<script>
+function validateForm() {
+    var form = document.forms[0];
+    var firstName = form["firstname"].value.trim();
+    var lastName = form["lastname"].value.trim();
+    var email = form["emailId"].value.trim();
+    var phone = form["contactNumber"].value.trim();
+    var cnic = form["cnicNumber"].value.trim();
+    var gender = form["gender"].value;
+    var dob = form["birthday"].value;
+
+    if (!firstName || !lastName || !email || !phone || !cnic || !gender || !dob) {
+        alert("All fields must be filled out.");
+        return false;
+    }
+
+    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+    }
+
+    var contactPattern = /^[0-9]{11}$/;
+    if (!contactPattern.test(phone)) {
+        alert("Please enter a valid 11-digit contact number.");
+        return false;
+    }
+
+    var cnicPattern = /^[0-9]{13}$/;
+    if (!cnicPattern.test(cnic)) {
+        alert("Please enter a valid 13-digit CNIC number.");
+        return false;
+    }
+
+    return true;
+}
+</script>
+</body>
+</html>

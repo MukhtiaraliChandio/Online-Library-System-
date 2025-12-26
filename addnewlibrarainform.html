@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Librarian Registration Form</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-image: url("form.jpg");
+      background-position: center;
+      background-size: cover;
+      font-family: sans-serif;
+      margin-top: 40px;
+    }
+    .regform {
+      width: 600px;
+      background-color: rgba(0, 0, 0, 0.6);
+      margin: auto;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      border-radius: 10px 10px 0 0;
+    }
+    .main {
+      background-color: rgba(0, 0, 0, 0.5);
+      width: 600px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 0 0 10px 10px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 5px;
+      color: #E5E5E5;
+      font-size: 14px;
+      text-transform: capitalize;
+    }
+    input[type=text],
+    input[type=password],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      background-color: #f1f1f1;
+    }
+    textarea {
+      resize: none;
+    }
+    input:focus, textarea:focus {
+      background-color: #ffa500;
+      outline: none;
+    }
+    .gender-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background: #4CAF50;
+      color: #fff;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .resetbtn {
+      background: #f44336;
+    }
+    .resetbtn:hover {
+      background: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="regform"><h1>Librarian Registration Form</h1></div>
+
+  <div class="main">
+    <form action="LibrarainServlet" method="post" onsubmit="return validateForm()">
+      <input type="hidden" id="libId" name="option" value="insertdatalib">
+
+      <div class="form-group">
+        <label for="firstname">Firstname</label>
+        <input type="text" id="firstname" name="firstname" placeholder="Enter Firstname" required>
+      </div>
+
+      <div class="form-group">
+        <label for="lastname">Lastname</label>
+        <input type="text" id="lastname" name="lastname" placeholder="Enter Lastname" required>
+      </div>
+
+      <div class="form-group">
+        <label for="fatherName">Father Name</label>
+        <input type="text" id="fatherName" name="fatherName" placeholder="Enter Father's Name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="surname">Surname</label>
+        <input type="text" id="surname" name="surname" placeholder="Enter Surname" required>
+      </div>
+
+      <div class="form-group">
+        <label>Select Gender</label>
+        <div class="gender-group">
+          <input type="radio" id="male" name="gender" value="Male">
+          <label for="male">Male</label>
+          <input type="radio" id="female" name="gender" value="Female">
+          <label for="female">Female</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="cnicNumber">CNIC</label>
+        <input type="text" id="cnicNumber" name="cnicNumber" placeholder="XXXXX-XXXXXXX-X" required>
+      </div>
+
+      <div class="form-group">
+        <label for="contactNumber">Contact Number</label>
+        <input type="text" id="contactNumber" name="contactNumber" placeholder="10-digit number" required>
+      </div>
+
+      <div class="form-group">
+        <label for="emailId">Email ID</label>
+        <input type="text" id="emailId" name="emailId" placeholder="example@gmail.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Current Address</label>
+        <textarea id="address" name="address" rows="4" placeholder="Enter your address" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="userId">User ID</label>
+        <input type="text" id="userId" name="userId" maxlength="50" placeholder="Enter User ID" required>
+      </div>
+
+      <div class="form-group">
+        <label for="userPassword">Password</label>
+        <input type="password" id="userPassword" name="userPassword" maxlength="50" placeholder="Enter Password" required>
+      </div>
+
+      <div style="text-align:center;">
+        <button type="submit">Register</button>
+        <button type="reset" class="resetbtn">Reset</button>
+      </div>
+
+    </form>
+  </div>
+
+<script>
+function validateForm() {
+  const firstName = document.getElementById("firstname").value.trim();
+  const lastName = document.getElementById("lastname").value.trim();
+  const email = document.getElementById("emailId").value.trim();
+  const phone = document.getElementById("contactNumber").value.trim();
+  const cnic = document.getElementById("cnicNumber").value.trim();
+  const genderMale = document.getElementById("male").checked;
+  const genderFemale = document.getElementById("female").checked;
+
+  // Check required fields
+  if (!firstName || !lastName || !email || !phone || !cnic || (!genderMale && !genderFemale)) {
+    alert("⚠️ Please fill out all fields.");
+    return false;
+  }
+
+  // Email validation
+  if (!email.includes("@") || !email.includes(".")) {
+    alert("❌ Invalid email address.");
+    return false;
+  }
+
+  // Contact number validation (11 digits)
+  if (phone.length !== 11 || isNaN(phone)) {
+    alert("❌ Contact number must be 11 digits.");
+    return false;
+  }
+
+  // CNIC validation (13 digits)
+  if (cnic.length !== 13 || isNaN(cnic)) {
+    alert("❌ CNIC must be 13 digits (without dashes).");
+    return false;
+  }
+
+  return true; // ✅ Allow form submission
+}
+</script>
+
+
+
+</body>
+</html>
